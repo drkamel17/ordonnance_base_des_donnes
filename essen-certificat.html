@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Certificat Antirabique - Essen</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+padding: 20px;
+background-color: #f9f9f9;
+}
+.certificat {
+background-color: white;
+border: 1px solid #ddd;
+padding: 20px;
+max-width: 600px;
+margin: 0 auto;
+margin-top: 60px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+text-align: center;
+color: #333;
+text-decoration: underline;
+font-size: 20px;
+}
+h2 {
+text-align: center;
+color: #333;
+text-decoration: underline;
+font-size: 10px;
+}
+p {
+line-height: 1.5;
+color: #555;
+}
+.print-button {
+text-align: center;
+margin-top: 20px;
+}
+.print-button button {
+padding: 10px 20px;
+font-size: 16px;
+background-color: #007bff;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+.print-button button:hover {
+background-color: #0056b3;
+}
+@media print {
+@page {
+size: A5;
+margin: 0.2cm 0.2cm 0.2cm 0.2cm;
+}
+body {
+margin: 0 !important;
+padding: 0 !important;
+font-size: 10pt !important;
+background-color: white;
+}
+.certificat {
+padding: 2px 8px !important;
+max-width: 100% !important;
+border: none;
+box-shadow: none;
+margin-top: 0;
+}
+h1 {
+font-size: 14pt !important;
+margin: 5px 0 !important;
+margin-top: 2cm !important;
+}
+h2 {
+font-size: 10pt !important;
+margin: 3px 0 !important;
+}
+p {
+font-size: 9pt !important;
+margin: 2px 0 !important;
+line-height: 1.2 !important;
+}
+input[type="text"],
+input[type="date"],
+textarea {
+border: none !important;
+background: none !important;
+box-shadow: none !important;
+outline: none !important;
+font-size: 9pt !important;
+}
+input[type="text"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+border: none !important;
+outline: none !important;
+}
+.print-button {
+display: none;
+}
+}
+</style>
+</head>
+<body>
+<div id="enteteContent"></div>
+
+<div class="certificat">
+<h1>Schéma Antirabique - Essen</h1>
+<h2>Selon l'instruction N16 du 15 Juillet 2024 relative à  la conduite à  tenir devant un risque rabique</h2>
+<p>
+NOM : <strong><input type="text" id="patientName" style="width: auto;"></strong><br>
+Date de naissance : <strong><input type="text" id="patientDob" style="width: auto;"></strong><br>
+Animal en cause : <strong><input type="text" id="animal" value="chien" style="width: auto;"></strong><br>
+<br><br>
+Classe 02, schéma choisi : vaccin cellulaire / schéma de Essen / sans SAR
+<br><br><br><br>
+</p>
+<p>
+Jour 0 : <input type="date" id="dateJour0" readonly> ( dans le deltoïde )<br>
+Jour 3 : <input type="date" id="datePlus3" readonly><br>
+Jour 7 : <input type="date" id="datePlus7" readonly><br>
+Jour 14 : <input type="date" id="datePlus14" readonly><br>
+<br><br><br><br>
+en cas d'âge <02 ans Face antérolatéral externe de la cuisse droite et gauche<br>
+<br><br>
+</p>
+<p style="text-align: right; margin-top: 30px;">
+Medecin traitant <br>
+<span class="docteur" style="font-weight: bold;" id="doctorName"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;
+</p>
+</div>
+
+<div class="print-button">
+<button id="printButton">Imprimer le schéma</button>
+<button id="saveEssenButton">sauvegarder</button>
+</div>
+<script src="print.js"></script>
+<script src="rabique-save-handler.js"></script>
+<script src="essen-certificat.js"></script>
+</body>
+</html>

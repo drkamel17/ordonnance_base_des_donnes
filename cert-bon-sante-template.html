@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Updated CSP to comply with Mozilla Add-ons policies -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none';">
+    <title>Certificat Médical</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            color: #000;
+            background-color: #fff;
+            margin: 0;
+            padding: 20px;
+            max-width: 21cm;
+            margin: 0 auto;
+        }
+
+        .certificate-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header-fields {
+            text-align: right;
+        }
+
+        .certificate-title {
+            text-align: center;
+            font-size: 16pt;
+            font-weight: bold;
+            margin: 30px 0;
+        }
+
+        .certificate-body {
+            text-align: right;
+            direction: rtl;
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+
+        .signature-fields {
+            text-align: left;
+            direction: ltr;
+        }
+
+        .underline {
+            border-bottom: 1px solid #000;
+            display: inline-block;
+            min-width: 150px;
+            padding: 2px 5px;
+        }
+
+        .signature-section {
+            margin-top: 50px;
+            text-align: right;
+        }
+
+
+        .divider {
+            border: none;
+            border-top: 1px solid #000;
+            margin: 30px 0;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+            }
+
+            .no-print {
+                display: none;
+            }
+            
+            /* Hide placeholders during printing */
+            input::placeholder,
+            textarea::placeholder {
+                color: transparent !important;
+                opacity: 0 !important;
+            }
+            
+            /* Ensure input fields look clean when printed */
+            .editable {
+                border: none !important;
+                border-bottom: none !important;
+                background-color: transparent !important;
+            }
+        }
+
+        .print-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .print-button:hover {
+            background-color: #0056b3;
+        }
+
+        .copy-button {
+            position: fixed;
+            top: 10px;
+            right: 110px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .copy-button:hover {
+            background-color: #218838;
+        }
+
+        .editable {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px dashed #666;
+            outline: none;
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        input[type="date"] {
+            font-family: 'Times New Roman', serif;
+            font-size: 12pt;
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+        }
+
+        input[type="date"]::-webkit-inner-spin-button {
+            display: none;
+        }
+
+        input[type="date"]::-webkit-clear-button {
+            display: none;
+        }
+
+        .editable:focus {
+            background-color: #f0f8ff;
+        }
+
+        .editable:focus {
+            background-color: #f0f8ff;
+        }
+
+        .certificate-type {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 14pt;
+            font-weight: bold;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <button class="print-button no-print" id="printBtn">Imprimer</button>
+    <button class="copy-button no-print" id="copyBtn">Copier partie1 vers la partie 2</button>
+
+    <!-- Certificat Médical Général -->
+    <div id="general-certificate">
+        <div class="certificate-header">
+            <h1 style="margin: 0; font-size: 14pt;">الجمهــــوريــــة الجــزائريـــة ال
