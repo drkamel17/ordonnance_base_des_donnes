@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Updated CSP to comply with Mozilla Add-ons policies -->
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none';">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'sha256-Bv3PmC1DpDAqDtK9r8V94YCWvtrGBARI6E/3skPCpY8=';">
     <title>Certificat Médical</title>
     <style>
         @page {
@@ -181,4 +180,102 @@
     <!-- Certificat Médical Général -->
     <div id="general-certificate">
         <div class="certificate-header">
-            <h1 style="margin: 0; font-size: 14pt;">الجمهــــوريــــة الجــزائريـــة ال
+            <h1 style="margin: 0; font-size: 14pt;">الجمهــــوريــــة الجــزائريـــة الديمقــراطيــة الشعبيـة</h1>
+            <div class="header-fields">
+                <div style="margin: 10px 0;">
+                    <input type="text" class="editable" id="wilaya-ar-1" placeholder="ولايــةar"
+                        style="width: 200px; direction: rtl;" />
+                </div>
+                <div style="margin: 10px 0;">
+                    <input type="text" class="editable" id="polyclinique-ar-1" placeholder="Poly ar"
+                        style="width: 200px; direction: rtl;" />
+                </div>
+            </div>
+        </div>
+
+        <div class="certificate-title">
+            شهادة طبية عامة
+        </div>
+
+        <div class="certificate-body">
+            <p>
+                أنا الممضي أسفله الحكيم : <input type="text" class="editable" id="docteur-1"
+                    placeholder="medecin" style="width: 150px;" dir="rtl" />
+            </p>
+            <p>
+                بعد فحص السيد <input type="text" class="editable" id="nom-1" placeholder="nom"
+                    style="width: 150px;" dir="rtl" /> <input type="text" class="editable" id="prenom-1"
+                    placeholder="prenom" style="width: 150px;" dir="rtl" /> العمر <input type="text"
+                    class="editable" id="age-1" placeholder="age" style="width: 100px;" />
+            </p>
+            <p>
+                مرشح لعمل <input type="text"  class="editable" id="travail-1" placeholder="العمل" style="width: 200px;"
+                    dir="rtl" /> الساكن ب <input type="text" class="editable" id="adresse-1" placeholder="العنوان"
+                    style="width: 250px;" dir="rtl" />
+            </p>
+            <p>
+                اشهد بأنه سليم من كل مرض أو عطب يمنعه من العمل المطلوب.
+            </p>
+            <p class="signature-fields">
+                <input type="text" class="editable date-input" id="date-1" style="width: 150px;" placeholder="jj/mm/aaaa" /> في
+            </p>
+            <p class="signature-fields">
+                إمضاء الطبيب
+            </p>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Certificat Médical Spécial -->
+    <div id="special-certificate">
+        <div class="certificate-header">
+            <h1 style="margin: 0; font-size: 14pt;">الجمهــــوريــــة الجــزائريـــة الديمقــراطيــة الشعبيـة</h1>
+            <div class="header-fields">
+                <div style="margin: 10px 0;">
+                    <input type="text" class="editable" id="wilaya-ar-2" placeholder="ولايــةar"
+                        style="width: 200px; direction: rtl;" />
+                </div>
+                <div style="margin: 10px 0;">
+                    <input type="text" class="editable" id="polyclinique-ar-2" placeholder="Poly ar"
+                        style="width: 200px; direction: rtl;" />
+                </div>
+            </div>
+        </div>
+
+        <div class="certificate-title">
+            شهادة طبية خاصة
+        </div>
+
+        <div class="certificate-body">
+            <p>
+                أنا الممضي أسفله الحكيم : <input type="text" class="editable" id="docteur-2"
+                    placeholder="medecin" style="width: 150px;" dir="rtl" />
+            </p>
+            <p>
+                بعد فحص السيد <input type="text" class="editable" id="nom-2" placeholder="nom"
+                    style="width: 150px;" dir="rtl" /> <input type="text" class="editable" id="prenom-2"
+                    placeholder="prenom" style="width: 150px;" dir="rtl" /> العمر <input type="text"
+                    class="editable" id="age-2" placeholder="age" style="width: 100px;" />
+            </p>
+            <p>
+                مرشح لعمل <input type="text" class="editable" id="travail-2" placeholder="العمل"
+                    style="width: 200px;" dir="rtl" /> الساكن ب <input type="text" class="editable"
+                    id="adresse-2" placeholder="العنوان" style="width: 250px;" dir="rtl" />
+            </p>
+            <p>
+                اشهد بأنه معافى من مرض السل أو أي مرض صدري مشابه.
+            </p>
+            <p class="signature-fields">
+                <input type="text" class="editable date-input" id="date-2" style="width: 150px;" placeholder="jj/mm/aaaa" /> في
+            </p>
+            <p class="signature-fields">
+                إمضاء الطبيب
+            </p>
+        </div>
+    </div>
+	
+    <script src="cert-bon-sante-scripts.js"></script>
+</body>
+
+</html>

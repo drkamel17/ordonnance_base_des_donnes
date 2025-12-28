@@ -65,8 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
         certificatType = 'justification';
     } else if (title.includes('Inaptitude')) {
         certificatType = 'inaptSport';
-    } else if (title.includes('arrêt')) {
+} else if (title.includes('arrêt')) {
         certificatType = 'arretTravail';
+    } else if (title.includes('descriptif') || title.includes('Radiox') || title.includes('CBV')) {
+        certificatType = 'cbv';
     }
 
     // Charger la taille de police sauvegardée
@@ -123,8 +125,10 @@ window.addEventListener('load', () => {
         certificatType = 'justification';
     } else if (title.includes('Inaptitude')) {
         certificatType = 'inaptSport';
-    } else if (title.includes('arrêt')) {
+} else if (title.includes('arrêt')) {
         certificatType = 'arretTravail';
+    } else if (title.includes('descriptif') || title.includes('Radiox') || title.includes('CBV')) {
+        certificatType = 'cbv';
     }
 
     const savedFontSize = localStorage.getItem(certificatType + 'FontSize') || '14';

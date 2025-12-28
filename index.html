@@ -3,479 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medical Extension Web</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Générateur de Certificats Médicaux</title>
+    <meta name="description" content="Application web pour générer des certificats médicaux">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --primary-color: #007bff;
-            --primary-dark: #0056b3;
-            --secondary-color: #28a745;
-            --danger-color: #dc3545;
-            --light-color: #f8f9fa;
-            --dark-color: #343a40;
-            --border-color: #dee2e6;
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f5f7fa;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
-        
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-        }
-        
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        
-        .dashboard {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .card {
             background-color: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            margin: 20px;
         }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        .header {
+            color: #1976d2;
+            margin-bottom: 30px;
         }
-        
-        .card h2 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--border-color);
+        .header i {
+            font-size: 3em;
+            margin-bottom: 15px;
         }
-        
-        .form-group {
-            margin-bottom: 1rem;
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
         }
-        
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: var(--dark-color);
+        .description {
+            color: #555;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 30px;
         }
-        
-        input, select, textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-        
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background-color: #1976d2;
             color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            text-align: center;
-            transition: all 0.3s ease;
             text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        
-        .btn:hover {
-            background-color: var(--primary-dark);
+        .cta-button:hover {
+            background-color: #1565c0;
             transform: translateY(-2px);
         }
-        
-        .btn-success {
-            background-color: var(--secondary-color);
-        }
-        
-        .btn-success:hover {
-            background-color: #1e7e34;
-        }
-        
-        .btn-danger {
-            background-color: var(--danger-color);
-        }
-        
-        .btn-danger:hover {
-            background-color: #c82333;
-        }
-        
-        .btn-block {
-            display: block;
-            width: 100%;
-        }
-        
-        .btn-group {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .btn-group .btn {
-            flex: 1;
-            min-width: 120px;
-        }
-        
-        .preview-container {
-            background-color: white;
+        .features {
+            text-align: left;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f5f9ff;
             border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin-top: 2rem;
         }
-        
-        .preview-container h2 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
+        .features h2 {
+            color: #1976d2;
+            text-align: center;
+            margin-top: 0;
         }
-        
-        .preview-content {
-            min-height: 300px;
-            border: 1px dashed var(--border-color);
-            border-radius: 4px;
-            padding: 1rem;
-            background-color: var(--light-color);
+        .feature-list {
+            list-style-type: none;
+            padding: 0;
         }
-        
-        .certificate-list {
-            max-height: 300px;
-            overflow-y: auto;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            padding: 1rem;
-            margin-top: 1rem;
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
         }
-        
-        .certificate-item {
-            padding: 0.75rem;
-            border-bottom: 1px solid var(--border-color);
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-        
-        .certificate-item:hover {
-            background-color: var(--light-color);
-        }
-        
-        .certificate-item:last-child {
+        .feature-list li:last-child {
             border-bottom: none;
         }
-        
-        .certificate-item h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.25rem;
+        .feature-list li i {
+            color: #4caf50;
+            margin-right: 10px;
+            font-size: 1.2em;
         }
-        
-        .certificate-item p {
-            font-size: 0.9rem;
-            color: #666;
-        }
-        
-        .hidden {
-            display: none;
-        }
-        
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 1rem;
-            border-radius: 4px;
-            color: white;
-            font-weight: 500;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            transform: translateX(200%);
-            transition: transform 0.3s ease;
-        }
-        
-        .notification.show {
-            transform: translateX(0);
-        }
-        
-        .notification.success {
-            background-color: var(--secondary-color);
-        }
-        
-        .notification.error {
-            background-color: var(--danger-color);
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            .dashboard {
-                grid-template-columns: 1fr;
-            }
-            
-            header h1 {
-                font-size: 2rem;
-            }
-        }
-        
-        /* Loading indicator */
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 1rem;
-        }
-        
-        .loading.show {
-            display: block;
-        }
-        
-        .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-left-color: var(--primary-color);
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Error message */
-        .error-message {
-            color: var(--danger-color);
-            text-align: center;
-            padding: 1rem;
-            border: 1px solid var(--danger-color);
-            border-radius: 4px;
-            margin: 1rem 0;
-            display: none;
+        .footer {
+            margin-top: 20px;
+            color: #777;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Medical Extension Web</h1>
-            <p>Version web de l'extension médicale</p>
-        </header>
-        
-        <div class="loading" id="loadingIndicator">
-            <div class="spinner"></div>
-            <p>Chargement de l'application...</p>
+        <div class="header">
+            <i class="fas fa-file-medical"></i>
+            <h1>Générateur de Certificats Médicaux</h1>
         </div>
         
-        <div class="error-message" id="errorMessage">
-            <p>Une erreur s'est produite lors du chargement de l'application. Veuillez réessayer.</p>
+        <p class="description">
+            Une application web moderne pour créer rapidement et facilement des certificats médicaux professionnels. 
+            Idéal pour les médecins, cliniques et centres de santé.
+        </p>
+        
+        <a href="certificat.html" class="cta-button">
+            <i class="fas fa-play-circle"></i>
+            Commencer à générer des certificats
+        </a>
+        
+        <a href="vaccin.html" class="cta-button" style="margin-top: 15px; background-color: #4CAF50;">
+            <i class="fas fa-syringe"></i>
+            Schéma de Rattrapage Vaccinal
+        </a>
+        
+        <div style="display: block; margin-top: 15px;">
+            <a href="dece/popup.html" class="cta-button" style="background-color: #FF5722;">
+                <i class="fas fa-file-alt"></i>
+                Certificat de Décès
+            </a>
         </div>
         
-        <div class="dashboard">
-            <div class="card">
-                <h2>Génération de certificats</h2>
-                <p>Créez différents types de certificats médicaux</p>
-                
-                <div class="form-group">
-                    <label for="certificateType">Type de certificat</label>
-                    <select id="certificateType">
-                        <option value="">Sélectionnez un type</option>
-                        <option value="arret">Arrêt de travail</option>
-                        <option value="prolongation">Prolongation</option>
-                        <option value="cbv">Certificat de bonne santé</option>
-                        <option value="antirabique">Certificat antirabique</option>
-                        <option value="brucellose">Certificat de brucellose</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="patientName">Nom du patient</label>
-                    <input type="text" id="patientName" placeholder="Entrez le nom du patient">
-                </div>
-                
-                <div class="form-group">
-                    <label for="patientAge">Âge du patient</label>
-                    <input type="number" id="patientAge" placeholder="Entrez l'âge du patient">
-                </div>
-                
-                <button class="btn btn-block" id="generateCertificate">Générer le certificat</button>
-            </div>
-            
-            <div class="card">
-                <h2>Gestion des données</h2>
-                <p>Récupérez et gérez vos données entre deux dates</p>
-                
-                <div class="form-group">
-                    <label for="dataCategory">Catégorie</label>
-                    <select id="dataCategory">
-                        <option value="">Sélectionnez une catégorie</option>
-                        <option value="arrets_travail">Arrêts de travail</option>
-                        <option value="prolongation">Prolongations</option>
-                        <option value="cbv">Certificats de bonne santé</option>
-                        <option value="antirabique">Certificats antirabiques</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="startDate">Date de début</label>
-                    <input type="date" id="startDate">
-                </div>
-                
-                <div class="form-group">
-                    <label for="endDate">Date de fin</label>
-                    <input type="date" id="endDate">
-                </div>
-                
-                <div class="btn-group">
-                    <button class="btn" id="retrieveData">Récupérer</button>
-                    <button class="btn btn-success" id="exportToExcel">Exporter Excel</button>
-                    <button class="btn" id="printData">Imprimer</button>
-                </div>
-            </div>
+        
+        <div class="features">
+            <h2>Fonctionnalités</h2>
+            <ul class="feature-list">
+                <li><i class="fas fa-check-circle"></i> Génération instantanée de certificats</li>
+                <li><i class="fas fa-check-circle"></i> Plusieurs types de certificats médicaux</li>
+                <li><i class="fas fa-check-circle"></i> Interface intuitive et facile à utiliser</li>
+                <li><i class="fas fa-check-circle"></i> Impression directe depuis le navigateur</li>
+                <li><i class="fas fa-check-circle"></i> Sauvegarde des informations personnelles</li>
+                <li><i class="fas fa-check-circle"></i> Compatible avec tous les appareils</li>
+            </ul>
         </div>
         
-        <div class="card">
-            <h2>Certificats sauvegardés</h2>
-            <p>Liste de vos certificats précédemment générés</p>
-            
-            <div class="form-group">
-                <input type="text" id="searchCertificates" placeholder="Rechercher un certificat...">
-            </div>
-            
-            <div id="certificateList" class="certificate-list">
-                <p>Aucun certificat sauvegardé pour le moment.</p>
-            </div>
-            
-            <button class="btn btn-block" id="loadSavedCertificates">Charger les certificats</button>
-        </div>
-        
-        <div class="preview-container">
-            <h2>Aperçu</h2>
-            <div id="previewContent" class="preview-content">
-                <p>L'aperçu du certificat ou des données apparaîtra ici</p>
-            </div>
-            
-            <div class="btn-group" style="margin-top: 1rem;">
-                <button class="btn" id="saveCurrentDocument">Sauvegarder</button>
-                <button class="btn btn-success" id="printPreview">Imprimer</button>
-                <button class="btn" id="clearPreview">Effacer</button>
-            </div>
-        </div>
+        <p class="footer">
+            Créé par Dr Daoudi | Application médicale professionnelle
+        </p>
     </div>
-    
-    <div id="notification" class="notification"></div>
-    
-    <!-- Include the application logic with error handling -->
-    <script src="./certificates.js"></script>
-    <script src="./data-manager.js"></script>
-    <script src="./app.js"></script>
-    <script>
-        // Add error handling for script loading
-        window.addEventListener('error', function(e) {
-            console.error('Script error:', e.error);
-            const errorMessage = document.getElementById('errorMessage');
-            if (errorMessage) {
-                errorMessage.style.display = 'block';
-                errorMessage.innerHTML = '<p>Erreur de script: ' + e.error.message + '</p>';
-            }
-        });
-        
-        // Initialize the app when all scripts are loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            try {
-                // Check if all required classes are available
-                if (typeof CertificateGenerator !== 'undefined' && 
-                    typeof DataManager !== 'undefined' && 
-                    typeof MedicalApp !== 'undefined') {
-                    
-                    // Initialize the data manager first
-                    window.dataManager = new DataManager();
-                    
-                    // Then initialize the app
-                    window.app = new MedicalApp();
-                    
-                    // Hide loading indicator
-                    const loadingIndicator = document.getElementById('loadingIndicator');
-                    if (loadingIndicator) {
-                        loadingIndicator.classList.remove('show');
-                    }
-                    
-                    console.log('Application initialized successfully');
-                } else {
-                    // Show error message if scripts failed to load
-                    const loadingIndicator = document.getElementById('loadingIndicator');
-                    const errorMessage = document.getElementById('errorMessage');
-                    
-                    if (loadingIndicator) {
-                        loadingIndicator.classList.remove('show');
-                    }
-                    
-                    if (errorMessage) {
-                        errorMessage.style.display = 'block';
-                        errorMessage.innerHTML = '<p>Erreur de chargement des scripts. Veuillez actualiser la page.</p>';
-                    }
-                    
-                    console.error('Required classes not found:', {
-                        CertificateGenerator: typeof CertificateGenerator,
-                        DataManager: typeof DataManager,
-                        MedicalApp: typeof MedicalApp
-                    });
-                }
-            } catch (error) {
-                console.error('Error initializing application:', error);
-                const loadingIndicator = document.getElementById('loadingIndicator');
-                const errorMessage = document.getElementById('errorMessage');
-                
-                if (loadingIndicator) {
-                    loadingIndicator.classList.remove('show');
-                }
-                
-                if (errorMessage) {
-                    errorMessage.style.display = 'block';
-                    errorMessage.innerHTML = '<p>Erreur d\'initialisation: ' + error.message + '</p>';
-                }
-            }
-        });
-    </script>
 </body>
 </html>
