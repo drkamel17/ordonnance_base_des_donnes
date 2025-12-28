@@ -28,6 +28,10 @@
       "dest": "/styles/$1"
     },
     {
+      "src": "/dece/(.*)",
+      "dest": "/dece/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1.html"
     }
