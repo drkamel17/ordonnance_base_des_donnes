@@ -1,26 +1,17 @@
 {
-  "name": "medical-extension-web",
+  "name": "versalcertificat",
   "version": "1.0.0",
-  "description": "Web version of the medical extension",
-  "main": "index.js",
+  "description": "Application de gestion de certificats médicaux",
+  "main": "api_simple.py",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "python api_simple.py",
+    "dev": "python api_simple.py"
   },
   "dependencies": {
-    "next": "14.0.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "sqlite": "^4.1.2",
+    "sqlite3": "^5.1.6"
   },
-  "devDependencies": {
-    "@types/node": "20.8.7",
-    "@types/react": "18.2.33",
-    "@types/react-dom": "18.2.14",
-    "autoprefixer": "10.4.16",
-    "postcss": "8.4.31",
-    "tailwindcss": "3.3.3",
-    "typescript": "5.2.2"
-  }
+  "keywords": ["certificats", "médicaux", "deces"],
+  "author": "",
+  "license": "ISC"
 }
